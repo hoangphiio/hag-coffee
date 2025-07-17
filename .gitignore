@@ -1,0 +1,8 @@
+node_modules
+package-lock.json
+assets
+pug
+scss
+src
+getfile.php
+package.json
