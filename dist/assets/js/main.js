@@ -8,9 +8,7 @@ $(document).ready(function () {
     $(".js-dropdown").click(function (e) {
       e.stopPropagation();
 
-      let childDropdowns = $(this).children(
-        ".js-child0, .js-child1"
-      );
+      let childDropdowns = $(this).children(".js-child0, .js-child1");
 
       if ($(this).hasClass("is-active")) {
         childDropdowns.stop().slideUp();
@@ -82,3 +80,31 @@ $(document).ready(function () {
     toggleActiveClass($(this).parents(".js-menu-search"));
   });
 });
+
+//------------------------------ Toogle Search ------------------------------
+if ($(".product-detail-splide").length) {
+  const productdt_swiper = document.querySelectorAll(".product-detail-splide");
+  productdt_swiper.forEach((item, i) => {
+    const swiperMain = item.querySelector(".js-gallery");
+    const swiperThumb = item.querySelector(".js-thumbs");
+
+    const itemImg = new Swiper(swiperThumb, {
+      speed: 800,
+      slidesPerView: "auto",
+    });
+
+    const itemMain = new Swiper(swiperMain, {
+      speed: 800,
+      effect: "slide",
+      grabCursor: true,
+      slidesPerView: "auto",
+      thumbs: { swiper: itemImg },
+      fadeEffect: { crossFade: true },
+
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  });
+}
